@@ -1,0 +1,51 @@
+<div>
+    <h1>Sign In:</h1><br>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+
+    <label>Name:</label>
+    <input type="text" class="form-control" placeholder="Enter your name" formControlName="name">
+
+    <div *ngIf="signInForm.get('name')?.touched && signInForm.get('name')?.invalid">
+      <small *ngIf="signInForm.get('name')?.errors?.['required']" style="color:red">
+        Name is required
+      </small>
+      <small *ngIf="signInForm.get('name')?.errors?.['minlength']" style="color:red">
+        Minimum 3 characters required
+      </small>
+    </div>
+
+    <label>Password:</label>
+    <input type="password" class="form-control" placeholder="Enter your password" formControlName="password">
+
+    <div *ngIf="signInForm.get('password')?.touched && signInForm.get('password')?.invalid">
+      <small style="color:red">Password must be at least 6 characters long</small>
+    </div>
+
+    <label>Confirm Password:</label>
+    <input type="password" class="form-control" placeholder="Confirm your password" formControlName="confirmPassword">
+
+    <div *ngIf="signInForm.errors?.['passwordMismatch'] && signInForm.get('confirmPassword')?.touched">
+      <small style="color:red">
+        Password and Confirm Password is not matched!
+      </small>
+    </div>
+
+    <label>Email:</label>
+    <input type="email" class="form-control" placeholder="Enter your email" formControlName="email">
+
+    <div *ngIf="signInForm.get('email')?.touched && signInForm.get('email')?.invalid">
+      <small *ngIf="signInForm.get('email')?.errors?.['required']" style="color:red">
+        Email is required
+      </small>
+      <small *ngIf="signInForm.get('email')?.errors?.['pattern']" style="color:red">
+        Invalid email format
+      </small>
+    </div>
+
+    <br>
+    <button [disabled]="signInForm.invalid" type="submit" class="btn btn-primary">
+      Submit
+    </button>
+
+  </form>
+</div>

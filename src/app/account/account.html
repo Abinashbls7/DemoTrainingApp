@@ -1,0 +1,16 @@
+<h2>Form Array Example</h2>
+ 
+<form [formGroup]="formArrayExample" (ngSubmit)="onSubmitFormArray()">
+  <div formArrayName="items">
+    <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+      <input type="text" formControlName="itemName" placeholder="Item Name" />
+      <input type="text" formControlName="itemPrice" placeholder="Item Price" />
+      <input type="text" formControlName="itemQuantity" placeholder="Item Quantity" />
+ 
+      <button *ngIf="i > 0" type="button" (click)="removeItems(i)">Remove</button>
+    </div>
+  </div>
+ 
+  <button type="button" (click)="addItems()">Add Item</button>
+  <button class="add-btn" type="submit">Submit</button>
+</form>
