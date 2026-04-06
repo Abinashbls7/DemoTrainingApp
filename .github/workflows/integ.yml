@@ -18,13 +18,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'               # Caches npm dependencies for faster runs
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci                  # Faster and more reliable than npm install in CI
+        run: npm ci
 
-      - name: Run tests (headless)
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      # Fixed test command for modern Angular + Vitest
+      - name: Run tests
+        run: npm run test -- --watch=false --no-progress
 
       - name: Build the project
-        run: npm run build
+        run: npm run build -- --configuration production
