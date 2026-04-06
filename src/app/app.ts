@@ -16,5 +16,4 @@ export class App {
     {id: 2, name: 'Shyam'},
     {id: 3, name: 'Hari'}
   ];
-  msg:string = "Hello, World";
 }
