@@ -16,6 +16,4 @@ export class App {
     {id: 2, name: 'Shyam'},
     {id: 3, name: 'Hari'}
   ];
-  msg: string = 'Hello , World';
-  num : number = 1234567890;
 }
